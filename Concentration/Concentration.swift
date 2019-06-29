@@ -13,7 +13,22 @@ class Concentration
     var cards = [Card]()
     
     // Int is of type Optional
-    var indexOfOneAndOnlyFaceUpCard: Int?
+    var indexOfOneAndOnlyFaceUpCard: Int? {
+        // Computed proprties
+        get{
+            var foundIndex: Int?
+            
+            for index in cards.indices{
+                if card[0]
+            }
+        }
+        set(newValue){
+            
+        }
+    }
+    
+    
+    
     
     func chooseCard(at index:Int){
         if !cards[index].isMatched{
