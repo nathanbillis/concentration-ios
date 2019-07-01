@@ -35,7 +35,7 @@ class ViewController: UIViewController {
             updateViewFromModel()
             if !game.cards[cardNumber].isMatched{
                 flipCount += 1
-            }
+                }
         }
         else{
             print("ERROR: card not in range")
@@ -76,18 +76,19 @@ class ViewController: UIViewController {
     
     
     
-    // Emoji Array
-    private var emojiChoices = ["🎃","👻","🎄","🍭","🎅","🌈","🍬"]
-    private var emoji = Dictionary<Int,String>()
+    // Emoji Array    
+    private var emojiChoices = "🎃👻🎄🍭🎅🌈🍬"
+    
+    private var emoji = Dictionary<Card,String>()
     
     
     // return emoji
     private func emoji(for card: Card) -> String{
-        if emoji[card.identifier] == nil, emojiChoices.count > 0 {
-                let randomIndex = emojiChoices.count.arc4random
-                emoji[card.identifier] = emojiChoices.remove(at: randomIndex)
+        if emoji[card] == nil, emojiChoices.count > 0 {
+                let randomStringIndex = emojiChoices.index(emojiChoices.startIndex, offsetBy: emojiChoices.count.arc4random)
+                emoji[card] = String(emojiChoices.remove(at: randomStringIndex))
         }
-        return emoji[card.identifier] ?? "?"
+        return emoji[card] ?? "?"
     }
     
     
