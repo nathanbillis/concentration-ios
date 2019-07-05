@@ -12,22 +12,10 @@ struct Concentration
 {
     private(set) var cards = [Card]()
     
-    // Int is of type Optional
     private var indexOfOneAndOnlyFaceUpCard: Int? {
-        // Computed proprties
+        // Check to see if the Card is the one and only
         get{
-            var foundIndex: Int?
-            
-            for index in cards.indices{
-                if cards[index].isFaceUp {
-                    if foundIndex == nil {
-                        foundIndex = index
-                    } else {
-                        return nil
-                    }
-                }
-            }
-            return foundIndex
+            return cards.indices.filter { cards[$0].isFaceUp }.oneAndOnly
         }
         set {
             for index in cards.indices{
@@ -83,5 +71,11 @@ struct Concentration
             cards[index].isMatched = false
         }
         cards = shuffleCards(with: cards)
+    }
+}
+
+extension Collection {
+    var oneAndOnly: Element? {
+        return count == 1 ? first : nil
     }
 }
